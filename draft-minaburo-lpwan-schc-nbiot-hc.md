@@ -38,15 +38,6 @@ normative:
 informative:  
   I-D.ietf-lpwan-overview:
   I-D.ietf-lpwan-ipv6-static-context-hc:
-    TGPP23720:
-    title: >
-      TR 23.720 v13.0.0 - Study on architecture enhancements for Cellular Internet of Things
-    # YAML's ">" syntax used above is a good way to write longer titles
-    author:
-      org: 3GPP
-    date: 2016
-    seriesinfo:
-      3GPP TR 23.720 v13.0.0
   TGPP33203:
     title: >
       TS 33.203 v13.1.0 - 3G security; Access security for IP-based services
@@ -389,11 +380,11 @@ TBD (Edgar)
 
 ## SCHC Rules
 TBD (Ana)
-* Depending of SCHC deployment case
-* End-2-end 
-	*Global rules to fetch customized rules
+  * Depending of SCHC deployment case
+  * End-2-end 
+     * Global rules to fetch customized rules
 * Minimum rule set for applying functions
-	*Fragmentation, compression, NATing
+    * Fragmentation, compression, NATing
 	
 * Size of rule id
 
@@ -402,12 +393,12 @@ TBD (Ana)
 
 ## Packet processing
 (Ana)
-*Operation over top vs 3gpp entities
+  *Operation over top vs 3gpp entities
 how to recognize a schc packet 
 
 ## SCHC Context
-* NATing
-* What protocols can be identified for compression depending of the deployument
+  * NATing
+  * What protocols can be identified for compression depending of the deployument
 
 # Fragmentation
 The RLC layer of NB-IoT can segment packets in suitable units that fits the selected transport blocks for transmissions of the physical layer. The selection of the blocks is done according to the input of the link adaptation function in the MAC layer and the quantity of data in the buffer. The link adaptation layer may produce different results at each Time Transmission Interval (TTI) for what is very difficult to set a fragmentation value according to the transport block that is selected for each transmission. Instead for NB-IoT SCHC must take care of keeping the application packets with a suitable size that do not exceed the MTU (1600 bytes).
