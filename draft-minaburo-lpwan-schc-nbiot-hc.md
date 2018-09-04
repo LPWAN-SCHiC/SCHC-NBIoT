@@ -38,8 +38,71 @@ normative:
 informative:  
   I-D.ietf-lpwan-overview:
   I-D.ietf-lpwan-ipv6-static-context-hc:
-    
-  
+  TGPP23720:
+    title: >
+      TR 23.720 v13.0.0 - Study on architecture enhancements for Cellular Internet of Things
+    # YAML's ">" syntax used above is a good way to write longer titles
+    author:
+      org: 3GPP
+    date: 2016
+    seriesinfo:
+      3GPP TR 23.720 v13.0.0
+  TGPP33203:
+    title: >
+      TS 33.203 v13.1.0 - 3G security; Access security for IP-based services
+    # YAML's ">" syntax used above is a good way to write longer titles
+    author:
+      org: 3GPP
+    date: 2016
+    seriesinfo:
+      3GPP TS 33.203 v13.1.0 
+  TGPP36321:
+    title: >
+      TS 36.321 v13.2.0 - Evolved Universal Terrestrial Radio Access (E-UTRA); Medium Access Control (MAC) protocol specification
+    # YAML's ">" syntax used above is a good way to write longer titles
+    author:
+      org: 3GPP
+    date: 2016
+    seriesinfo:
+      3GPP TS 36.321 v13.2.0  
+  TGPP36323:
+    title: >
+      TS 36.323 v13.2.0 - Evolved Universal Terrestrial Radio Access (E-UTRA); Packet Data  Convergence Protocol (PDCP) specification
+    # YAML's ">" syntax used above is a good way to write longer titles
+    author:
+      org: 3GPP
+    date: 2016
+    seriesinfo:
+      3GPP TS 36.323 v13.2.0  
+  TGPP36331:
+    title: >
+      TS 36.331 v13.2.0 - Evolved Universal Terrestrial Radio Access (E-UTRA); Radio Resource Control (RRC); Protocol specification
+    # YAML's ">" syntax used above is a good way to write longer titles
+    author:
+      org: 3GPP
+    date: 2016
+    seriesinfo:
+      3GPP TS 36.331 v13.2.0      
+  TGPP36300:
+    title: >
+      TS 36.300 v15.1.0 - Evolved Universal Terrestrial Radio Access (E-UTRA) and Evolved Universal Terrestrial Radio Access Network (E-UTRAN); Overall description; Stage 2
+    # YAML's ">" syntax used above is a good way to write longer titles
+    author:
+      org: 3GPP
+    date: 2018
+    seriesinfo:
+      3GPP TS 36.300 v15.1.0
+  TGPP24301:
+    title: >
+      TS 24.301 v15.2.0 - Non-Access-Stratum (NAS) protocol for Evolved Packet System (EPS); Stage 3
+    # YAML's ">" syntax used above is a good way to write longer titles
+    author:
+      org: 3GPP
+    date: 2018
+    seriesinfo:
+      3GPP TS 24.301 v15.2.0     
+
+
 --- abstract
 
 The Static Context Header Compression (SCHC) specification describes
@@ -66,7 +129,7 @@ This document describes the use of SCHC and its parameterizing over the NB-IoT w
 # Terminology
 
 This document will follow the terms defined in {{I-D.ietf-lpwan-ipv6-static-context-hc}}, in {{I-D.ietf-lpwan-overview}}, and 
-the [TGPP23720]. 
+the {{TGPP23720}}. 
 
 * CIoT.	Cellular IoT
 * C-SGN. CIoT Serving Gateway Node
@@ -152,8 +215,8 @@ For the CIOT cases, additionally to transmissions of data over User Plane, 3GPP 
 The maximum recommended MTU size is 1358 Bytes. The radio network protocols limits the packet sizes to be transmitted over the air including radio protocol overhead to 1600 Octets. But the value is reduced further to avoid fragmentation in the backbone of the network due to the payload encryption size (multiple of 16) and handling of the additional core transport overhead.
 
 ## Data Transmission over User Plane
-The User Plane utilizes the protocol stack of the Access Stratum (AS) for data transfer.  AS (Access Stratum) is the functional layer responsible for transporting data over wireless connection and managing radio resources. The user plane AS has support for features such as reliability, segmentation and concatenation. The transmissions of the AS utilize link adaptation, meaning that the transport format utilized for the transmissions are optimized according to the radio conditions, the number of bits to transmit and the power and interference constrains. That means that the number of bits transmitted over the air depends of the Modulation and Coding Schemes (MCS) selected. The transmissions in the physical layer happens at network synchronized intervals of times called TTI (Transmission Time Interval). The transmission of a Transport Block (TB) is completed during, at least, one TTI. Each Transport Block has a different MCS and number of bits available to transmit. The Transport Blocks characteristics are defined by the MAC technical specification [TGPP36321].
-The Access Stratum for User Plane is comprised by Packet Data Convergence Protocol (PDCP) [TGPP36323], Radio Link Protocol (RLC)[TGPP36322], Medium Access Control protocol (MAC)[TGPP36321] and the Physical Layer [TGPP36201]. 
+The User Plane utilizes the protocol stack of the Access Stratum (AS) for data transfer.  AS (Access Stratum) is the functional layer responsible for transporting data over wireless connection and managing radio resources. The user plane AS has support for features such as reliability, segmentation and concatenation. The transmissions of the AS utilize link adaptation, meaning that the transport format utilized for the transmissions are optimized according to the radio conditions, the number of bits to transmit and the power and interference constrains. That means that the number of bits transmitted over the air depends of the Modulation and Coding Schemes (MCS) selected. The transmissions in the physical layer happens at network synchronized intervals of times called TTI (Transmission Time Interval). The transmission of a Transport Block (TB) is completed during, at least, one TTI. Each Transport Block has a different MCS and number of bits available to transmit. The Transport Blocks characteristics are defined by the MAC technical specification {TGPP36321}.
+The Access Stratum for User Plane is comprised by Packet Data Convergence Protocol (PDCP) {TGPP36323}, Radio Link Protocol (RLC){TGPP36322}, Medium Access Control protocol (MAC){TGPP36321} and the Physical Layer {TGPP36201}. 
 
 ~~~~~~
               +---------+                                       +---------+  |
@@ -228,7 +291,7 @@ MAC provides a mapping between the higher layers abstraction called Logical Chan
 
 
 ## Data Over Control Plane
-The Non-Access Stratum (NAS), conveys mainly control signaling between the UE and the cellular network [TGPP24301]. NAS is transported on top of the Access Stratum (AS) already presented in the previous sections.
+The Non-Access Stratum (NAS), conveys mainly control signaling between the UE and the cellular network {TGPP24301}. NAS is transported on top of the Access Stratum (AS) already presented in the previous sections.
 
 
 ~~~~~~
@@ -252,14 +315,14 @@ The Non-Access Stratum (NAS), conveys mainly control signaling between the UE an
       LTE eMTC
        UE
 
-	*PDCP is bypassed until AS security is activated [TGPP36300].	
+	*PDCP is bypassed until AS security is activated {TGPP36300}.	
 ~~~~~~
 
 {: #Fig--ProtocolStack title="3GPP CIOT radio protocol architecture for DoNAS transmissions"}   
 
 NAS has been adapted to provide support for user plane data transmissions to reduce the overhead when transmitting infrequent small quantities of data. This is known as Data over NAS (DoNAS) or Control Plane CIoT EPS optimization. In DoNAS the UE makes use of the pre-established NAS security and piggyback uplink small data into the initial NAS uplink message, and uses an additional NAS message to receive downlink small data response.
 The data encryption from the network side is performed by the C-SGN in a NAS PDU. 
-The AS protocol stack used by DoNAS is somehow special. Since the security associations are not established yet in the radio network, to reduce the protocol overhead,  PDCP (Packet Data Convergence Protocol) is bypassed  until AS security is activated. RLC (Radio Link Control protocol) is configured by default in AM mode, but depending of the features supported by the network and the terminal it may be configured in other modes by the network operator. For example, the transparent mode does not add any header or does not process the payload in any way reducing the overhead, but the MTU would be limited by the transport block used to transmit the data which is couple of thousand of bits maximum. If UM (only Release 15 compatible terminals) is used, the RLC mechanisms of reliability is disabled and only the reliability provided by the MAC layer by Hybrid Automatic Repeat reQuest (HARQ) is available. In this case, the protocol overhead might be smaller than for the AM case because the lack of status reporting but with the same support for segmentation up to 16000 Bytes. NAS packet are encapsulated within a RRC (Radio Resource Control)[TGPP36331] message.   
+The AS protocol stack used by DoNAS is somehow special. Since the security associations are not established yet in the radio network, to reduce the protocol overhead,  PDCP (Packet Data Convergence Protocol) is bypassed  until AS security is activated. RLC (Radio Link Control protocol) is configured by default in AM mode, but depending of the features supported by the network and the terminal it may be configured in other modes by the network operator. For example, the transparent mode does not add any header or does not process the payload in any way reducing the overhead, but the MTU would be limited by the transport block used to transmit the data which is couple of thousand of bits maximum. If UM (only Release 15 compatible terminals) is used, the RLC mechanisms of reliability is disabled and only the reliability provided by the MAC layer by Hybrid Automatic Repeat reQuest (HARQ) is available. In this case, the protocol overhead might be smaller than for the AM case because the lack of status reporting but with the same support for segmentation up to 16000 Bytes. NAS packet are encapsulated within a RRC (Radio Resource Control){TGPP36331} message.   
 
 Depending of the data type indication signaled (IP or non-IP data), the network allocates an IP address or just establish a direct forwarding path. DoNAS is regulated under rate control upon previous agreement, meaning that a maximum number of bits per unit of time is agreed per device subscription beforehand and configured in the device. 
 The use of DoNAS is typically expected when a terminal in a power saving state requires to do a short transmission and receive an acknowledgment or short feedback from the network. Depending of the size of buffered data to transmit, the UE might be instructed to deploy the connected mode transmissions instead, limiting and controlling the DoNAS transmissions to predefined thresholds and a good resource optimization balance for the terminal and the network. The support for mobility of DoNAS is present but produces additional overhead. 
@@ -325,7 +388,7 @@ SCHC could be deployed differently depending of the placing of the entities in t
 TBD (Edgar)
 
 ## SCHC Rules
-TBD (Anna)
+TBD (Ana)
 * Depending of SCHC deployment case
 * End-2-end 
 	*Global rules to fetch customized rules
@@ -382,15 +445,6 @@ NB-IoT and 3GPP wireless access in general assumes byte aligned payload. Therefo
 # Security considerations
 3GPP access security is specified in (TGPP33203).
 
-# 3GPP References
-
-* {: Ref--TGPP23720 Title TGPP23720  3GPP, "TR 23.720 v13.0.0 - Study on architecture enhancements for Cellular Internet of Things", 2016.}              
-* [TGPP33203]   3GPP, "TS 33.203 v13.1.0 - 3G security; Access security for IP-based services", 2016.			  
-* [TGPP36321]   3GPP, "TS 36.321 v13.2.0 - Evolved Universal Terrestrial Radio Access (E-UTRA); Medium Access Control (MAC) protocol specification", 2016
-* [TGPP36323]   3GPP, "TS 36.323 v13.2.0 - Evolved Universal Terrestrial Radio Access (E-UTRA); Packet Data  Convergence Protocol (PDCP) specification", 2016.
-* [TGPP36331]   3GPP, "TS 36.331 v13.2.0 - Evolved Universal Terrestrial Radio Access (E-UTRA); Radio Resource Control (RRC); Protocol specification", 2016.
-* [TGPP36300]   3GPP, "TS 36.300 v15.1.0 - Evolved Universal Terrestrial Radio Access (E-UTRA) and Evolved Universal Terrestrial Radio Access Network (E-UTRAN); Overall description; Stage 2", 2018
-* [TGPP24301]   3GPP "TS 24.301 v15.2.0 - Non-Access-Stratum (NAS) protocol for Evolved Packet System (EPS); Stage 3", 2018 
 
 
 
