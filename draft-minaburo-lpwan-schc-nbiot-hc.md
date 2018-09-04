@@ -66,7 +66,7 @@ This document describes the use of SCHC and its parameterizing over the NB-IoT w
 # Terminology
 
 This document will follow the terms defined in {{I-D.ietf-lpwan-ipv6-static-context-hc}}, in {{I-D.ietf-lpwan-overview}}, and 
-the [TGPP23720]. 
+the {{[TGPP23720]}}. 
 
 * CIoT.	Cellular IoT
 * C-SGN. CIoT Serving Gateway Node
@@ -384,7 +384,7 @@ NB-IoT and 3GPP wireless access in general assumes byte aligned payload. Therefo
 
 # 3GPP References
 
-* [TGPP23720]   3GPP, "TR 23.720 v13.0.0 - Study on architecture enhancements for Cellular Internet of Things", 2016.              
+* {: Ref--TGPP23720 Title TGPP23720  3GPP, "TR 23.720 v13.0.0 - Study on architecture enhancements for Cellular Internet of Things", 2016.}              
 * [TGPP33203]   3GPP, "TS 33.203 v13.1.0 - 3G security; Access security for IP-based services", 2016.			  
 * [TGPP36321]   3GPP, "TS 36.321 v13.2.0 - Evolved Universal Terrestrial Radio Access (E-UTRA); Medium Access Control (MAC) protocol specification", 2016
 * [TGPP36323]   3GPP, "TS 36.323 v13.2.0 - Evolved Universal Terrestrial Radio Access (E-UTRA); Packet Data  Convergence Protocol (PDCP) specification", 2016.
