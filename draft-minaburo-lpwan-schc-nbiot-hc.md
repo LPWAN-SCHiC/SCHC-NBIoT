@@ -217,30 +217,31 @@ MAC provides a mapping between the higher layers abstraction called Logical Chan
 
 
                                                <Max. 1600 bytes> 
-                 +-----+         +-----+           +----------+ 
- Application     | AP1 |         | AP1 |           |   AP2    | 
-(IP/non-IP)      | PDU |         | PDU |           |   PDU    |
-                 +-----+         +-----+           +----------+
-                 |     |         |     |           |          | 
-   PDCP     +----------+    +----------+      +---------------+
-            |PDCP| AP1 |    |PDCP| AP1 |      |PDCP|   AP2    |
-            |Head| PDU |    |Head| PDU |      |Head|   PDU    | 
-	    +----------+    +----------+      +---------+-----\ 
-            |    |     |    |     |    |      |    |    |\     `-----\ 
-       +-------------------------------+      |    | (1)| `------\(2) \ 
-  RLC  |RLC |PDCP| AP1 |RLC |PDCP| AP1 | +--------------+   +----|-----+
-       |Head|Head| PDU |Head|Head| PDU | |RLC |PDCP| AP2|   |RLC | AP2 |
-       +---------------|---------------+ |Head|Head| PDU|   |Head| PDU |
-       |         |     |         |     | +---------|----+   +----------+
-       |         |     | LCID1   |     | /         /   /    |          | 
-       |         |     |         |     |/         /   /LCID2|          | 
-       |         |     |         |     |         |   |      |          | 
-       |         |     |         |     |         |   |      |          | 
-  +--------------------------------------------------+ +---------+---------+ 
-M |MAC |RLC |PDCP| AP1 |RLC |PDCP| AP1 |RLC |PDCP|AP2| |MAC |RLC | AP2 |Pad|
-A |Head|Head|Head| PDU |Head|Head| PDU |Head|Head|PDU| |Head|Head| PDU |   |
-C +--------------------------------------------------+ +---------------+---+ 
-                      TB1                                       TB2  
+               +-----+         +-----+           +---------+ 
+ Application   | AP1 |         | AP1 |           |   AP2   | 
+(IP/non-IP)    | PDU |         | PDU |           |   PDU   |
+               +-----+         +-----+           +---------+
+               |     |         |     |           |         | 
+   PDCP   +----------+    +----------+      +--------------+
+          |PDCP| AP1 |    |PDCP| AP1 |      |PDCP|   AP2   |
+          |Head| PDU |    |Head| PDU |      |Head|   PDU   | 
+          +----------+    +----------+      +---------+----\ 
+          |    |     |    |     |    |      |    |    |\    `-----\ 
+      +------------------------------+      |    | (1)| `-----\(2) \ 
+ RLC  |RLC|PDCP| AP1 |RLC |PDCP| AP1 | +--------------+   +----|----+
+      |Head|Head|PDU |Head|Head| PDU | |RLC |PDCP| AP2|   |RLC | AP2|
+      +--------------|---------------+ |Head|Head| PDU|   |Head| PDU|
+      |        |     |         |     | +---------|----+   +---------+
+      |        |     | LCID1   |     | /         /   /    |         | 
+      |        |     |         |     |/         /   /LCID2|         | 
+      |        |     |         |     |         |   |      |         | 
+      |        |     |         |     |         |   |      |         | 
+  +------------------------------------------------+ +---------+------+ 
+M |MAC|RLC|PDCP| AP1 |RLC |PDCP| AP1 |RLC |PDCP|AP2| |MAC |RLC | AP2|P|
+A |Hea|Hea|Hea-| PDU |Head|Head| PDU |Head|Head|PDU| |Head|Head| PDU|a|
+  |der|der| der| PDU |Head|Head| PDU |Head|Head|PDU| |Head|Head| PDU|d|
+C +------------------------------------------------+ +--------------+-+ 
+                      TB1                                    TB2  
 ~~~~~~
 {: #Fig-ProtocolBearers title='Example of User Plane packet encapsulation for two transport blocks'} 
 
@@ -272,7 +273,7 @@ The Non-Access Stratum (NAS), conveys mainly control signaling between the UE an
   LTE eMTC
     UE
 
-	*PDCP is bypassed until AS security is activated TGPP36300.	
+	*PDCP is bypassed until AS security is activated TGPP36300.
 ~~~~~~
 {: #Fig-ProtocolStack title='3GPP CIOT radio protocol architecture for DoNAS transmissions'}   
 
@@ -433,10 +434,11 @@ RLC       |RLC  |NAS/RRC| |RLC  | NAS/RRC   |         +----|-------+
           |     |       |   \                  \      |            | 
           |     |       |    \                  \      \           |
           |     |       |     \                  \      \          |
-    +-------------------+ +----|------------------+ +----+---------|---+  
-MAC |MAC  |RLC  |  RLC  | |MAC |RLC |     RLC     | |MAC |    RLC  |Pad| 
-    |Head |Head |PAYLOAD| |Head|Head|    PAYLOAD  | |Head|    PDU  |   |
-    +-------------------+ +-----------------------+ +----+---------+---+
+    +-------------------+ +----|------------------+ +----+---------|-+  
+MAC |MAC  |RLC  |  RLC  | |MAC |RLC |     RLC     | |MAC |    RLC  |P| 
+    |Head |Head |PAYLOAD| |Head|Head|    PAYLOAD  | |Head|    PDU  |a|
+    |     |     |       | |    |    |             | |    |         |d|
+    +-------------------+ +-----------------------+ +----+---------+-+
           TB1                       TB2                       TB3           
 
 ~~~~~~
