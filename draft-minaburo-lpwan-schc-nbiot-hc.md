@@ -225,9 +225,10 @@ MAC provides a mapping between the higher layers abstraction called Logical Chan
    PDCP   +----------+    +----------+      +--------------+
           |PDCP| AP1 |    |PDCP| AP1 |      |PDCP|   AP2   |
           |Head| PDU |    |Head| PDU |      |Head|   PDU   | 
-          +----------+    +----------+      +---------+----\ 
-          |    |     |    |     |    |      |    |    |\    `-----\ 
-      +------------------------------+      |    | (1)| `-----\(2) \ 
+          +----------+    +----------+      +---------+----\
+          |    |     |    |     |    |      |    |    |\    \_____
+	  |    |     |    |     |    |      |    |    | \         \
+      +------------------------------+      |    | (1)|  \_____(2) \ 
  RLC  |RLC|PDCP| AP1 |RLC |PDCP| AP1 | +--------------+   +----|----+
       |Head|Head|PDU |Head|Head| PDU | |RLC |PDCP| AP2|   |RLC | AP2|
       +--------------|---------------+ |Head|Head| PDU|   |Head| PDU|
@@ -413,7 +414,7 @@ NB-IoT and 3GPP wireless access in general assumes byte aligned payload. Therefo
 
                     +---+ +---+ +-----+                   +--+ 
 Applications        |AP1| |AP1| | AP2 |                   |AP2|
-(IP/non-IP)         |PDU| |PDU| | PDU |¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨ |PDU|
+(IP/non-IP)         |PDU| |PDU| | PDU |~~~~~~~~~~~~~~~~~~~|PDU|
                     +---+ +---+ +-----+                   +---+
                     |   |/   /      /                     |   | 
  NAS /RRC       +-------+---|-----+------+           +--------+
@@ -421,10 +422,10 @@ Applications        |AP1| |AP1| | AP2 |                   |AP2|
 		|RRC|PDU|PDU| PDU | RRC  |           |RRC |PDU|
                 +---+---|---+-----+------+           +--------|
                 |       | \              |           |        |
-                |<----Max. 1600 bytes--->|           |        |
-                |       |   \             \           ¨\       ¨\            
-                |       |    --\          -\            \        \
-          +-------------| +-----|-----------+            ¨\       ¨\ 
+                |<----Max. 1600 bytes--->|           |_       |_
+                |       |   \             \            \        \            
+                |       |    --\          -\            \_       \_
+          +-------------| +-----|-----------+             \        \ 
 RLC       |RLC  |NAS/RRC| |RLC  | NAS/RRC   |         +----|-------+
           |Head |  PDU  | |Head |  PDU (2/2)|         |RLC |NAS/RRC|
 	  |     | (1/2) | |Head |  PDU (2/2)|         |RLC |NAS/RRC|
