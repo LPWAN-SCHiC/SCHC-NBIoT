@@ -152,8 +152,8 @@ the SCEF of the Home PLMN and is located in the Visited PLMN
 # Architecture
 ## NB-IoT entities
 
-~~~~~~
-  +--+
+~~~~~~ 
+   +--+
    |UE| \              +------+      +------+
    +--+  \             | MME  |------| HSS  |
           \          / +------+      +------+
@@ -171,17 +171,17 @@ the SCEF of the Home PLMN and is located in the Visited PLMN
 
 
 The architecture for 3GPP LTE network has been reused for NB-IoT with some optimizations and simplifications known as Cellular IoT (CIoT). Considering the typical use cases for CIoT devices here are described some of the additions to the LTE architecture specific for CIoT. C-SGN(CIoT Serving Gateway Node) is a deployment option co-locating EPS entities in the control plane and user plane paths (for example, MME + SGW + P-GW) and the external interfaces of the entities supported. The C-SGN also supports at least some of the following CIoT EPS Optimizations:
-*	Control Plane CIoT EPS Optimization for small data transmission.
-*	User Plane CIoT EPS Optimization for small data transmission.
-*	Necessary security procedures for efficient small data transmission.
-*	SMS without combined attach for NB-IoT only UEs.
-*	Paging optimizations for coverage enhancements.
-*	Support for non-IP data transmission via SGi tunneling and/or SCEF.
-*	Support for Attach without PDN (Packet Data Network) connectivity.
+  * Control Plane CIoT EPS Optimization for small data transmission.
+  * User Plane CIoT EPS Optimization for small data transmission.
+  * Necessary security procedures for efficient small data transmission.
+  * SMS without combined attach for NB-IoT only UEs.
+  * Paging optimizations for coverage enhancements.
+  * Support for non-IP data transmission via SGi tunneling and/or SCEF.
+  * Support for Attach without PDN (Packet Data Network) connectivity.
 
 Another node introduced in the CIOT architecture is the SCEF (Service Capability Exposure Function) that provide means to securely expose service and network capabilities to entities external to the network operator. The northbound APIS are defined by OMA and OneM2M. The main functions of a SCEF are:
-* Non-IP Data Delivery (NIDD) established through the SCEF.
-* Monitoring and exposure of event related to UE reachability, loss of connectivity, location reporting, roaming status, communication failure and change of IMEI-IMSI association.
+  * Non-IP Data Delivery (NIDD) established through the SCEF.
+  * Monitoring and exposure of event related to UE reachability, loss of connectivity, location reporting, roaming status, communication failure and change of IMEI-IMSI association.
 
 ~~~~~~
                                                            +---------+                                 
@@ -240,19 +240,19 @@ The Access Stratum for User Plane is comprised by Packet Data Convergence Protoc
 ### Packet Data Convergence Protocol (PDCP)
 Each of the  Radio Bearers (RB) are associated with one PDCP entity. And a PDCP entity is associated with one or two RLC entities depending of the unidirectional or bi-directional characteristics of the RB and RLC mode used. A PDCP entity is associated either control plane or user plane which independent configuration and functions. The maximum supported size for NB-IoT of a PDCP SDU is 1600 octets.
 The main services and functions of the PDCP sublayer for NB-IoT for the user plane include:
-* Header compression and decompression by means of ROHC (Robust Header Compression) 
-* Transfer of user and control data to higher and lower layers
-* Duplicate detection of lower layer SDUs when re-establishing connection (when RLC with Acknowledge Mode in use for User Plane only)
-* Ciphering and deciphering
-* Timer-based SDU discard in uplink
+  * Header compression and decompression by means of ROHC (Robust Header Compression) 
+  * Transfer of user and control data to higher and lower layers
+  * Duplicate detection of lower layer SDUs when re-establishing connection (when RLC with Acknowledge Mode in use for User Plane only)
+  * Ciphering and deciphering
+  * Timer-based SDU discard in uplink
 
 
 ### Radio Link Protocol (RLC)
 RLC is a layer-2 protocol that operates between the UE and the base station (eNB). It supports the packet delivery from higher layers to MAC creating packets that are transmitted over the air optimizing the Transport Block utilization.
 RLC flow of data packets is unidirectional and it is composed of a transmitter located in the transmission device and a receiver located in the destination device. Therefore to configure bi-directional flows, two set of entities, one in each direction (downlink and uplink) must be configured and they are effectively peered to each other. The peering allows the transmission of control packets (ex., status reports) between entities. RLC can be configured for data transfer in one of the following modes:
-* Transparent Mode (TM). In this mode RLC do not segment or concatenate SDUs from higher layers and do not include any header to the payload. When acting as a transmitter, RLC receives SDUs from upper layers and transmit directly to its flow RLC receiver via lower layers. Similarly, an TM RLC receiver would only deliver without additional processing the packets to higher layers upon reception.
-* Unacknowledged Mode (UM). This mode provides support for segmentation and concatenation of payload. The size of the RLC packet depends of the indication given at a particular transmission opportunity by the lower layer (MAC) and are octets aligned. The  packet delivery to the receiver do not include support for reliability and the lost of a segment from a packet means a whole packet loss. Also in case of lower layer retransmissions there is no support for re-segmentation in case of change of the radio conditions triggering the selection of a smaller transport block. Additionally it provides PDU duplication detection and discard, reordering of out of sequence and loss detection.
-* Acknowledged Mode (AM). Additional to the same functions supported from UM, this mode also adds a moving windows based reliability service on top of the lower layer services. It also provides support for re-segmentation and it requires  bidirectional communication to exchange acknowledgment reports called RLC Status Report and trigger retransmissions is needed. Protocol error detection is also supported by this mode.
+  * Transparent Mode (TM). In this mode RLC do not segment or concatenate SDUs from higher layers and do not include any header to the payload. When acting as a transmitter, RLC receives SDUs from upper layers and transmit directly to its flow RLC receiver via lower layers. Similarly, an TM RLC receiver would only deliver without additional processing the packets to higher layers upon reception.
+  * Unacknowledged Mode (UM). This mode provides support for segmentation and concatenation of payload. The size of the RLC packet depends of the indication given at a particular transmission opportunity by the lower layer (MAC) and are octets aligned. The  packet delivery to the receiver do not include support for reliability and the lost of a segment from a packet means a whole packet loss. Also in case of lower layer retransmissions there is no support for re-segmentation in case of change of the radio conditions triggering the selection of a smaller transport block. Additionally it provides PDU duplication detection and discard, reordering of out of sequence and loss detection.
+  * Acknowledged Mode (AM). Additional to the same functions supported from UM, this mode also adds a moving windows based reliability service on top of the lower layer services. It also provides support for re-segmentation and it requires  bidirectional communication to exchange acknowledgment reports called RLC Status Report and trigger retransmissions is needed. Protocol error detection is also supported by this mode.
 The mode uses depends of the operator configuration for the type of data to be transmitted. For example, data transmissions supporting mobility or requiring high reliability would be most likely configured using AM, meanwhile streaming and real time data would be map to a UM configuration.
 
 ### Medium Access Control (MAC)
