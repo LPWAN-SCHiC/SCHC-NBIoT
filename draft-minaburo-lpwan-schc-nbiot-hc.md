@@ -39,14 +39,7 @@ informative:
   I-D.ietf-lpwan-overview:
   I-D.ietf-lpwan-ipv6-static-context-hc:
   TGPP33203:
-    title: >
-      TS 33.203 v13.1.0 - 3G security; Access security for IP-based services
-    # YAML's ">" syntax used above is a good way to write longer titles
-    author:
-      org: 3GPP
-    date: 2016
-    seriesinfo:
-      3GPP TS 33.203 v13.1.0 
+    title: TS 33.203 v13.1.0 - 3G security; Access security for IP-based services
   TGPP36321:
     title: >
       TS 36.321 v13.2.0 - Evolved Universal Terrestrial Radio Access (E-UTRA); Medium Access Control (MAC) protocol specification
@@ -144,6 +137,8 @@ the SCEF of the Home PLMN and is located in the Visited PLMN
 ## NB-IoT entities
 
 ~~~~~~ 
+
+
    +--+
    |UE| \              +------+      +------+
    +--+  \             | MME  |------| HSS  |
@@ -175,6 +170,8 @@ Another node introduced in the CIOT architecture is the SCEF (Service Capability
   * Monitoring and exposure of event related to UE reachability, loss of connectivity, location reporting, roaming status, communication failure and change of IMEI-IMSI association.
 
 ~~~~~~
+
+
                                                            +---------+                                 
                                                            |   HSS   |
                                                            +---------+
@@ -210,6 +207,8 @@ The User Plane utilizes the protocol stack of the Access Stratum (AS) for data t
 The Access Stratum for User Plane is comprised by Packet Data Convergence Protocol (PDCP) {TGPP36323}, Radio Link Protocol (RLC){TGPP36322}, Medium Access Control protocol (MAC){TGPP36321} and the Physical Layer {TGPP36201}. 
 
 ~~~~~~
+
+
               +---------+                                       +---------+  |
               |IP/non|IP+---------------------------------------+IP/non|IP+->+
               +---------+    |    +-------------------+    |    +---------+  |
@@ -249,7 +248,9 @@ The mode uses depends of the operator configuration for the type of data to be t
 ### Medium Access Control (MAC)
 MAC provides a mapping between the higher layers abstraction called Logical Channels comprised by the previously described protocols to the Physical layer channels (transport channels). Additionally, MAC may multiplex packets from different Logical Channels and prioritize what to fit into one Transport Block if there is data and space available to maximize the efficiency of data transmission. MAC also provides error correction and reliability support by means of HARQ, transport format selection and scheduling information reporting from the terminal to the network. MAC also adds the necessary padding and piggyback control elements when possible additional to the higher layers data.
 
-~~~~~~ 
+~~~~~~
+
+
                                                                   <Max. 1600 bytes> 
                               +-----+         +---------+           +-----------+ 
   Application                 | AP1 |         |   AP1   |           |    AP2    | 
@@ -284,6 +285,8 @@ The Non-Access Stratum (NAS), conveys mainly control signaling between the UE an
 
 
 ~~~~~~
+
+
     +---------+                                       +---------+---------+  |                           
     |IP/non-IP|----|-----------------------------|----|IP/non-IP|IP/non-IP|->|                          
     +---------+    |                             |    +---------+---------+ >|                          
@@ -318,6 +321,8 @@ The use of DoNAS is typically expected when a terminal in a power saving state r
 
 
 ~~~~~~
+
+
       +--------+   +--------+   +--------+ 
       |        |   |        |   |        |       +------------------+
       |   UE   |   |  C-BS  |   |  C-SGN |       | Roaming Scenarios|
@@ -440,7 +445,9 @@ NB-IoT and 3GPP wireless access in general assumes byte aligned payload. Therefo
 # Appendix
 ## NB-IoT with data over NAS
 
-~~~~~~                                                                                                                                              
+~~~~~~  
+
+
                        +-----+ +---------+ +-------+                         +-----+ 
  Applications          | AP1 | |   AP1   | | AP2   |                         | AP2 |
 (IP/non-IP)            | PDU | |   PDU   | | PDU   |  ¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨ | PDU |
