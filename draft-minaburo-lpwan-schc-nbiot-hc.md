@@ -102,7 +102,6 @@ informative:
     seriesinfo:
       3GPP TS 24.301 v15.2.0     
 
-
 --- abstract
 
 The Static Context Header Compression (SCHC) specification describes
