@@ -250,33 +250,31 @@ The mode uses depends of the operator configuration for the type of data to be t
 MAC provides a mapping between the higher layers abstraction called Logical Channels comprised by the previously described protocols to the Physical layer channels (transport channels). Additionally, MAC may multiplex packets from different Logical Channels and prioritize what to fit into one Transport Block if there is data and space available to maximize the efficiency of data transmission. MAC also provides error correction and reliability support by means of HARQ, transport format selection and scheduling information reporting from the terminal to the network. MAC also adds the necessary padding and piggyback control elements when possible additional to the higher layers data.
 
 ~~~~~~ 
-                                                                  <Max. 1600 bytes>                                                                                
-                              +-----+         +---------+           +-----------+                                                                
-  Application                 | AP1 |         |   AP1   |           |    AP2    |                                                                
- (IP/non-IP)                  | PDU |         |   PDU   |           |    PDU    |                                                                
-                              +-----+         +---------+           +-----------+                                                                
-                              |     |         |         |           |           |                                                                
-    PDCP                 +----------+    +--------------+      +----------------+                                                                
-                         |PDCP| AP1 |    |PDCP| AP1     |      |PDCP|    AP2    |                                                                
-                         |Head| PDU |    |Head| PDU     |      |Head|    PDU    |                                                               
-                         +----------+    +--------------+      +----------+-----\                                                                
-                         |    |     |    |     |        |      |    |     |\     `----\                                                            
-                   +------------------------------------+      |    | (1) | `-------\(2)'-\                                                    
-    RLC            |RLC  |PDCP| AP1 |RLC |PDCP| AP1     | +---------------+     +----|-----+                                                     
-                   |Head |Head| PDU |Head|Head| PDU     | |RLC |PDCP| AP2 |     |RLC | AP2 |                                                     
-                   +----------------|-------------------+ |Head|Head| PDU |     |Head| PDU |                                                    
-                   |          |     |         |         | +---------|-----+     +----------+                                                     
-                   |          |     | LCID1   |         | /         /     /     |          |                                                     
-                   |          |     |         |         |/         /     / LCID2|          |                                                     
-                   |          |     |         |         |         |     |       |          |                                                     
-                   |          |     |         |         |         |     |       |          |                                                     
-             +----------------------------------------------------------+ +----------+--------------+                                            
-    MAC      |MAC  |RLC  |PDCP| AP1 |RLC |PDCP| AP1     |RLC |PDCP| AP2 | |MAC  |RLC | AP2 | Padding|                                            
-             |Head |Head |Head| PDU |Head|Head| PDU     |Head|Head| PDU | |Head |Head| PDU |        |                                            
-             +----------------------------------------------------------+ +----------------+--------+                                            
-                                                                                                                                                 
-                                  TB1                                                TB2           
-
+                                                                  <Max. 1600 bytes> 
+                              +-----+         +---------+           +-----------+ 
+  Application                 | AP1 |         |   AP1   |           |    AP2    | 
+ (IP/non-IP)                  | PDU |         |   PDU   |           |    PDU    |
+                              +-----+         +---------+           +-----------+ 
+                              |     |         |         |           |           | 
+    PDCP                 +----------+    +--------------+      +----------------+
+                         |PDCP| AP1 |    |PDCP| AP1     |      |PDCP|    AP2    |
+                         |Head| PDU |    |Head| PDU     |      |Head|    PDU    | 
+                         +----------+    +--------------+      +----------+-----\ 
+                         |    |     |    |     |        |      |    |     |\     `----\ 
+                   +------------------------------------+      |    | (1) | `-------\(2)'-\ 
+    RLC            |RLC  |PDCP| AP1 |RLC |PDCP| AP1     | +---------------+     +----|-----+
+                   |Head |Head| PDU |Head|Head| PDU     | |RLC |PDCP| AP2 |     |RLC | AP2 |
+                   +----------------|-------------------+ |Head|Head| PDU |     |Head| PDU |
+                   |          |     |         |         | +---------|-----+     +----------+
+                   |          |     | LCID1   |         | /         /     /     |          | 
+                   |          |     |         |         |/         /     / LCID2|          | 
+                   |          |     |         |         |         |     |       |          | 
+                   |          |     |         |         |         |     |       |          | 
+             +----------------------------------------------------------+ +----------+--------------+ 
+    MAC      |MAC  |RLC  |PDCP| AP1 |RLC |PDCP| AP1     |RLC |PDCP| AP2 | |MAC  |RLC | AP2 | Padding|
+             |Head |Head |Head| PDU |Head|Head| PDU     |Head|Head| PDU | |Head |Head| PDU |        |
+             +----------------------------------------------------------+ +----------------+--------+ 
+                                  TB1                                                TB2  
 ~~~~~~
 {: #Fig--ProtocolBearers title="Example of User Plane packet encapsulation for two transport blocks"} 
 
@@ -306,7 +304,7 @@ The Non-Access Stratum (NAS), conveys mainly control signaling between the UE an
       LTE eMTC
        UE
 
-	*PDCP is bypassed until AS security is activated {TGPP36300}.	
+	*PDCP is bypassed until AS security is activated TGPP36300.	
 ~~~~~~
 
 {: #Fig--ProtocolStack title="3GPP CIOT radio protocol architecture for DoNAS transmissions"}   
