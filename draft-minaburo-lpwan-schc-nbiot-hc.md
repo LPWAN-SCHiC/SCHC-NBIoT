@@ -24,7 +24,7 @@ author:
   name: Edgar Ramos
   org: Ericsson 
   street: Hirsalantie 11
-  city: 02420 Jorvas, Kirkkonummi
+  city: 02420 Jorvas
   country: Finland
   email: edgar.ramos@ericsson.com
 - ins: S. Shanmugalingam
@@ -320,45 +320,43 @@ The use of DoNAS is typically expected when a terminal in a power saving state r
 
 SCHC could be deployed differently depending of the placing of the entities in the architecture. NB-IoT and in general the cellular technologies interfaces are standardized by 3GPP. Therefore the introduction of SCHC entities in the RAN (Radio Access Network) would require support from both the network and terminal entities. If SCHC entities are to be placed in RAN it would require to be added to be specified as an option for the UE - Base Station/C-SGN interfaces. Another option is to place the SCHC entities in the applications layer, and the SCHC packets would be transmitted as non-IP packets. The first option allows the deployment of IP for routing and addressing as well. 
 
-
-## NB-IoT Channels
-(Rule ID on L2)
-
-TBD
-
 # Static Context Header Compression
 
-TBD
+TBD (Edgar)
 
 ## SCHC Rules
-TBD
+TBD (Anna)
+* Depending of SCHC deployment case
+* End-2-end 
+	*Global rules to fetch customized rules
+* Minimum rule set for applying functions
+	*Fragmentation, compression, NATing
+	
+* Size of rule id
 
-### Rule ID 
-The Rule ID the SCHC identifies are:
-* In the SCHC C/D context the Rule used to keep the Field Description of the header packet. 
+* 1 fragment rule And at least one Rule ID may be reserved to the case where no SCHC C/D nor SCHC fragmentation were possible.
 
-* In SCHC Fragmentation the specific modes and settings.
-
-* And at least one Rule ID may be reserved to the case where no SCHC C/D nor SCHC fragmentation were possible.
-
-TBD
 
 ## Packet processing
-TBD
+(Ana)
+*Operation over top vs 3gpp entities
+how to recognize a schc packet 
 
 ## SCHC Context
-TBD
+* NATing
+* What protocols can be identified for compression depending of the deployument
 
 # Fragmentation
 The RLC layer of NB-IoT can segment packets in suitable units that fits the selected transport blocks for transmissions of the physical layer. The selection of the blocks is done according to the input of the link adaptation function in the MAC layer and the quantity of data in the buffer. The link adaptation layer may produce different results at each Time Transmission Interval (TTI) for what is very difficult to set a fragmentation value according to the transport block that is selected for each transmission. Instead for NB-IoT SCHC must take care of keeping the application packets with a suitable size that do not exceed the MTU (1600 bytes).
 
-## Fragmentation Headers
-TBD
-
 ## Fragmentation modes
-TBD
+(Sothy)
+Look a the different options of reliability and see the implications for NB-IoT for the different deployment modes
 
 ## Fragmentation Parameters
+(Edgar)
+Headers sizes
+    Example for the end2end case and check what is operator defined
 * Rule ID
 
 * DTag
@@ -373,7 +371,10 @@ TBD
 
 * MAX_ATTEMPS
 
+* MIC (Ana) 
+
 TBD
+
 
 # Padding
 NB-IoT and 3GPP wireless access in general assumes byte aligned payload. Therefore the L2 word for NB-IoT MUST be considered 8 bits and the treatment of padding should use this value accordingly.
