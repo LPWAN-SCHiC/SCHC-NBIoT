@@ -73,7 +73,7 @@ informative:
       org: 3GPP
     date: 2016
     seriesinfo:
-      3GPP TS 36.323 v13.2.0  
+      3GPP TS 36.323 v13.2.0
   TGPP36331:
     title: >
       TS 36.331 v13.2.0 - Evolved Universal Terrestrial Radio Access (E-UTRA); Radio Resource Control (RRC); Protocol specification
@@ -82,7 +82,7 @@ informative:
       org: 3GPP
     date: 2016
     seriesinfo:
-      3GPP TS 36.331 v13.2.0      
+      3GPP TS 36.331 v13.2.0
   TGPP36300:
     title: >
       TS 36.300 v15.1.0 - Evolved Universal Terrestrial Radio Access (E-UTRA) and Evolved Universal Terrestrial Radio Access Network (E-UTRAN); Overall description; Stage 2
@@ -100,7 +100,7 @@ informative:
       org: 3GPP
     date: 2018
     seriesinfo:
-      3GPP TS 24.301 v15.2.0     
+      3GPP TS 24.301 v15.2.0
 
 --- abstract
 
