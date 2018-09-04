@@ -66,7 +66,7 @@ This document describes the use of SCHC and its parameterizing over the NB-IoT w
 # Terminology
 
 This document will follow the terms defined in {{I-D.ietf-lpwan-ipv6-static-context-hc}}, in {{I-D.ietf-lpwan-overview}}, and 
-the {{[TGPP23720]}}. 
+the [TGPP23720]. 
 
 * CIoT.	Cellular IoT
 * C-SGN. CIoT Serving Gateway Node
