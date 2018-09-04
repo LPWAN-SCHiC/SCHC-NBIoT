@@ -137,24 +137,24 @@ Another node introduced in the CIOT architecture is the SCEF (Service Capability
 ~~~~~~
 
 
-                                                           +---------+                                 
-                                                           |   HSS   |
-                                                           +---------+
-                                                           /
-                                      +---------------+ /S6a
-                    +---------+       |               |/
-+------+   C-Uu     |         +-------+               |  T6i   +-------------+  T7  +------+
-| CIOT +------------+   eNB   |   S1  |               +--------+  IWK-SCEF   +------+ SCEF |
-| UE   |            | (NB-IoT)|       |               |        +-------------+      +------+
-+------+            +---------+       |               |        +-------------+
-                                      |    C-SGN      |SGd     |  SMS-GMSC/  |
-                                      |               +--------+  IWMSC/SMS  |
-                    +---------+       |               |        |  router     |
-+--------+  LTE-Uu  |         |       |               |        +-------------+
-|LTE eMTC|  (eMTC)  |  eNB    +-------+               |  S8    +----------+    +-----------+
-|   UE   +----------+  (eMTC) |  S1   |               +--------+    PGW   |SGi |Application|
-+--------+          +---------+       |               |        |          +----+Server (AS)|
-                                      +---------------+        +----------+    +-----------+
+                                                    +---------+                                 
+                                                    |   HSS   |
+                                                    +---------+
+                                                     /
+                                  +---------------+ /S6a
+                  +---------+     |               |/
++------+   C-Uu   |         +-----+               | T6i   +-----------+  T7  +------+
+| CIOT +----------+   eNB   |  S1 |               +-------+  IWK-SCEF +------+ SCEF |
+| UE   |          | (NB-IoT)|     |               |       +-----------+      +------+
++------+          +---------+     |               |       +------------+
+                                  |    C-SGN      |SGd    |  SMS-GMSC/ |
+                                  |               +-------+  IWMSC/SMS |
+                   +--------+     |               |       |  router    |
++--------+  LTE-Uu |        |     |               |       +------------+
+|LTE eMTC|  (eMTC) |  eNB   +-----+               |  S8   +--------+    +-----------+
+|   UE   +---------+ (eMTC) |  S1 |               +-------+  PGW   |SGi |Application|
++--------+         +--------+     |               |       |        +----+Server (AS)|
+                                  +---------------+       +--------+    +-----------+
 
 ~~~~~~                                                                                                     
 {: #Fig-DataPlan title='3GPP optimized CIOT network architecture'}
@@ -174,21 +174,21 @@ The Access Stratum for User Plane is comprised by Packet Data Convergence Protoc
 ~~~~~~
 
 
-              +---------+                                       +---------+  |
-              |IP/non|IP+---------------------------------------+IP/non|IP+->+
-              +---------+    |    +-------------------+    |    +---------+  |
-              | PDCP    +---------+ PDCP    | GTP|U   +---------+ GTP-U   |->+
-              +---------+    |    +-------------------+    |    +---------+  |
-              | RLC     +---------+ RLC     |UDP/IP   +---------+ UDP/IP  +->+
-              +---------+    |    +-------------------+    |    +---------+  |
-              | MAC     +---------+ MAC     | L2      +---------+ L2      +->+
-              +---------+    |    +-------------------+    |    +---------+  |
-              | PHY     +---------+ PHY     | PHY     +---------+ PHY     +->+
-              +---------+         +-------------------+         +---------+  |
-                           C-Uu/                         S1-U                SGi
-                 CIOT/     LTE+Uu        C-BS/eNB                  C-SGN
-            	 LTE eMTC
-            	    UE
+  +---------+                                    +---------+  |
+  |IP/non|IP+------------------------------------+IP/non|IP+->+
+  +---------+    |    +----------------+    |    +---------+  |
+  | PDCP    +---------+ PDCP  | GTP|U  +---------+ GTP-U   |->+
+  +---------+    |    +----------------+    |    +---------+  |
+  | RLC     +---------+ RLC   |UDP/IP  +---------+ UDP/IP  +->+
+  +---------+    |    +----------------+    |    +---------+  |
+  | MAC     +---------+ MAC   | L2     +---------+ L2      +->+
+  +---------+    |    +----------------+    |    +---------+  |
+  | PHY     +---------+ PHY   | PHY    +---------+ PHY     +->+
+  +---------+         +----------------+         +---------+  |
+               C-Uu/                      S1-U               SGi
+    CIOT/     LTE+Uu      C-BS/eNB                 C-SGN
+   LTE eMTC
+     UE
 ~~~~~~
 {: #Fig-ProtocolArchi title='3GPP CIOT radio protocol architecture for data over user plane'} 
 
@@ -206,7 +206,7 @@ The main services and functions of the PDCP sublayer for NB-IoT for the user pla
 RLC is a layer-2 protocol that operates between the UE and the base station (eNB). It supports the packet delivery from higher layers to MAC creating packets that are transmitted over the air optimizing the Transport Block utilization.
 RLC flow of data packets is unidirectional and it is composed of a transmitter located in the transmission device and a receiver located in the destination device. Therefore to configure bi-directional flows, two set of entities, one in each direction (downlink and uplink) must be configured and they are effectively peered to each other. The peering allows the transmission of control packets (ex., status reports) between entities. RLC can be configured for data transfer in one of the following modes:
   * Transparent Mode (TM). In this mode RLC do not segment or concatenate SDUs from higher layers and do not include any header to the payload. When acting as a transmitter, RLC receives SDUs from upper layers and transmit directly to its flow RLC receiver via lower layers. Similarly, an TM RLC receiver would only deliver without additional processing the packets to higher layers upon reception.
-  * Unacknowledged Mode (UM). This mode provides support for segmentation and concatenation of payload. The size of the RLC packet depends of the indication given at a particular transmission opportunity by the lower layer (MAC) and are octets aligned. The  packet delivery to the receiver do not include support for reliability and the lost of a segment from a packet means a whole packet loss. Also in case of lower layer retransmissions there is no support for re-segmentation in case of change of the radio conditions triggering the selection of a smaller transport block. Additionally it provides PDU duplication detection and discard, reordering of out of sequence and loss detection.
+  * Unacknowledged Mode (UM). This mode provides support for segmentation and concatenation of payload. The size of the RLC packet depends of the indication given at a particular transmission opportunity by the lower layer (MAC) and are octets aligned. The  packet delivery to the receiver do not include support for reliability and the lost of a segment from a packet means a whole packet loss. Also in case of lower layer retransmissions there is no support for re-segmentation in case of change of the radio conditions triggring the selection of a smaller transport block. Additionally it provides PDU duplication detection and discard, reordering of out of sequence and loss detection.
   * Acknowledged Mode (AM). Additional to the same functions supported from UM, this mode also adds a moving windows based reliability service on top of the lower layer services. It also provides support for re-segmentation and it requires  bidirectional communication to exchange acknowledgment reports called RLC Status Report and trigger retransmissions is needed. Protocol error detection is also supported by this mode.
 The mode uses depends of the operator configuration for the type of data to be transmitted. For example, data transmissions supporting mobility or requiring high reliability would be most likely configured using AM, meanwhile streaming and real time data would be map to a UM configuration.
 
@@ -217,30 +217,30 @@ MAC provides a mapping between the higher layers abstraction called Logical Chan
 
 
                                                                   <Max. 1600 bytes> 
-                              +-----+         +---------+           +-----------+ 
-  Application                 | AP1 |         |   AP1   |           |    AP2    | 
- (IP/non-IP)                  | PDU |         |   PDU   |           |    PDU    |
-                              +-----+         +---------+           +-----------+ 
-                              |     |         |         |           |           | 
-    PDCP                 +----------+    +--------------+      +----------------+
-                         |PDCP| AP1 |    |PDCP| AP1     |      |PDCP|    AP2    |
-                         |Head| PDU |    |Head| PDU     |      |Head|    PDU    | 
-                         +----------+    +--------------+      +----------+-----\ 
-                         |    |     |    |     |        |      |    |     |\     `----\ 
-                   +------------------------------------+      |    | (1) | `-------\(2)'-\ 
-    RLC            |RLC  |PDCP| AP1 |RLC |PDCP| AP1     | +---------------+     +----|-----+
-                   |Head |Head| PDU |Head|Head| PDU     | |RLC |PDCP| AP2 |     |RLC | AP2 |
-                   +----------------|-------------------+ |Head|Head| PDU |     |Head| PDU |
-                   |          |     |         |         | +---------|-----+     +----------+
-                   |          |     | LCID1   |         | /         /     /     |          | 
-                   |          |     |         |         |/         /     / LCID2|          | 
-                   |          |     |         |         |         |     |       |          | 
-                   |          |     |         |         |         |     |       |          | 
-             +----------------------------------------------------------+ +----------+--------------+ 
-    MAC      |MAC  |RLC  |PDCP| AP1 |RLC |PDCP| AP1     |RLC |PDCP| AP2 | |MAC  |RLC | AP2 | Padding|
-             |Head |Head |Head| PDU |Head|Head| PDU     |Head|Head| PDU | |Head |Head| PDU |        |
-             +----------------------------------------------------------+ +----------------+--------+ 
-                                  TB1                                                TB2  
+                           +-----+         +-----+           +-----------+ 
+  Application              | AP1 |         | AP1 |           |    AP2    | 
+ (IP/non-IP)               | PDU |         | PDU |           |    PDU    |
+                           +-----+         +-----+           +-----------+ 
+                           |     |         |     |           |           | 
+    PDCP              +----------+    +----------+      +----------------+
+                      |PDCP| AP1 |    |PDCP| AP1 |      |PDCP|    AP2    |
+                      |Head| PDU |    |Head| PDU |      |Head|    PDU    | 
+                      +----------+    +----------+      +----------+-----\ 
+                      |    |     |    |     |    |      |    |     |\     `----\ 
+                +--------------------------------+      |    | (1) | `-------\(2)'-\ 
+    RLC         |RLC  |PDCP| AP1 |RLC |PDCP| AP1 | +---------------+     +----|-----+
+                |Head |Head| PDU |Head|Head| PDU | |RLC |PDCP| AP2 |     |RLC | AP2 |
+                +----------------|---------------+ |Head|Head| PDU |     |Head| PDU |
+                |          |     |         |     | +---------|-----+     +----------+
+                |          |     | LCID1   |     | /         /     /     |          | 
+                |          |     |         |     |/         /     / LCID2|          | 
+                |          |     |         |     |         |     |       |          | 
+                |          |     |         |     |         |     |       |          | 
+          +------------------------------------------------------+ +----------+-------------+ 
+    MAC   |MAC  |RLC  |PDCP| AP1 |RLC |PDCP| AP1 |RLC |PDCP| AP2 | |MAC  |RLC | AP2 |Padding|
+          |Head |Head |Head| PDU |Head|Head| PDU |Head|Head| PDU | |Head |Head| PDU |       |
+          +------------------------------------------------------+ +----------------+-------+ 
+                                  TB1                                              TB2  
 ~~~~~~
 {: #Fig-ProtocolBearers title='Example of User Plane packet encapsulation for two transport blocks'} 
 
@@ -252,25 +252,25 @@ The Non-Access Stratum (NAS), conveys mainly control signaling between the UE an
 ~~~~~~
 
 
-    +---------+                                       +---------+---------+  |                           
-    |IP/non-IP|----|-----------------------------|----|IP/non-IP|IP/non-IP|->|                          
-    +---------+    |                             |    +---------+---------+ >|                          
-    | NAS     |----|-----------------------------|----| NAS     | GTP-C/U |->|                          
-    +---------+    |    +---------+---------+    |    +---------+---------+  |                          
-    | RRC     |----|----| RRC     | S1-AP   |----|----| S1-AP   |         |  |                          
-    +---------+    |    +---------+---------+    |    +---------+  UDP    |->|                          
-    | PDCP*   |----|----| PDCP*   | SCTP    |----|----| SCTP    |         |  |                          
-    +---------+    |    +---------+---------+    |    +---------+---------+  |                          
-    | RLC     |----|----| RLC     | IP      |----|----| IP      | IP      |->|                          
-    +---------+    |    +---------+---------+    |    +---------+---------+  |                          
-    | MAC     |----|----| MAC     | L2      |----|----| L2      | L2      |->|                          
-    +---------+    |    +---------+---------+    |    +---------+---------+  |                          
-    | PHY     |----|----| PHY     | PHY     |----|----| PHY     | PHY     |->|                          
-    +---------+         +---------+---------+         +---------+---------+  |                          
-                 C-Uu/                         S1-lite                       SGi                         
-       CIOT/     LTE-Uu        C-BS/eNB                        C-SGN                 
-      LTE eMTC
-       UE
++---------+                                       +---------+---------+  |                           
+|IP/non-IP|----|-----------------------------|----|IP/non-IP|IP/non-IP|->|                          
++---------+    |                             |    +---------+---------+ >|                          
+| NAS     |----|-----------------------------|----| NAS     | GTP-C/U |->|                          
++---------+    |    +---------+---------+    |    +---------+---------+  |                          
+| RRC     |----|----| RRC     | S1-AP   |----|----| S1-AP   |         |  |                          
++---------+    |    +---------+---------+    |    +---------+  UDP    |->|                          
+| PDCP*   |----|----| PDCP*   | SCTP    |----|----| SCTP    |         |  |                          
++---------+    |    +---------+---------+    |    +---------+---------+  |                          
+| RLC     |----|----| RLC     | IP      |----|----| IP      | IP      |->|                          
++---------+    |    +---------+---------+    |    +---------+---------+  |                          
+| MAC     |----|----| MAC     | L2      |----|----| L2      | L2      |->|                          
++---------+    |    +---------+---------+    |    +---------+---------+  |                          
+| PHY     |----|----| PHY     | PHY     |----|----| PHY     | PHY     |->|                          
++---------+         +---------+---------+         +---------+---------+  |                          
+             C-Uu/                         S1-lite                       SGi                         
+   CIOT/     LTE-Uu        C-BS/eNB                        C-SGN                 
+  LTE eMTC
+    UE
 
 	*PDCP is bypassed until AS security is activated TGPP36300.	
 ~~~~~~
