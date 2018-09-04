@@ -39,52 +39,17 @@ informative:
   I-D.ietf-lpwan-overview:
   I-D.ietf-lpwan-ipv6-static-context-hc:
   TGPP33203:
-    title: TS 33.203 v13.1.0 - 3G security; Access security for IP-based services
+    title: "TS 33.203 v13.1.0 - 3G security; Access security for IP-based services"
   TGPP36321:
-    title: >
-      TS 36.321 v13.2.0 - Evolved Universal Terrestrial Radio Access (E-UTRA); Medium Access Control (MAC) protocol specification
-    # YAML's ">" syntax used above is a good way to write longer titles
-    author:
-      org: 3GPP
-    date: 2016
-    seriesinfo:
-      3GPP TS 36.321 v13.2.0  
+    title: "TS 36.321 v13.2.0 - Evolved Universal Terrestrial Radio Access (E-UTRA); Medium Access Control (MAC) protocol specification"
   TGPP36323:
-    title: >
-      TS 36.323 v13.2.0 - Evolved Universal Terrestrial Radio Access (E-UTRA); Packet Data  Convergence Protocol (PDCP) specification
-    # YAML's ">" syntax used above is a good way to write longer titles
-    author:
-      org: 3GPP
-    date: 2016
-    seriesinfo:
-      3GPP TS 36.323 v13.2.0
+    title: "TS 36.323 v13.2.0 - Evolved Universal Terrestrial Radio Access (E-UTRA); Packet Data  Convergence Protocol (PDCP) specification"
   TGPP36331:
-    title: >
-      TS 36.331 v13.2.0 - Evolved Universal Terrestrial Radio Access (E-UTRA); Radio Resource Control (RRC); Protocol specification
-    # YAML's ">" syntax used above is a good way to write longer titles
-    author:
-      org: 3GPP
-    date: 2016
-    seriesinfo:
-      3GPP TS 36.331 v13.2.0
+    title: "TS 36.331 v13.2.0 - Evolved Universal Terrestrial Radio Access (E-UTRA); Radio Resource Control (RRC); Protocol specification"
   TGPP36300:
-    title: >
-      TS 36.300 v15.1.0 - Evolved Universal Terrestrial Radio Access (E-UTRA) and Evolved Universal Terrestrial Radio Access Network (E-UTRAN); Overall description; Stage 2
-    # YAML's ">" syntax used above is a good way to write longer titles
-    author:
-      org: 3GPP
-    date: 2018
-    seriesinfo:
-      3GPP TS 36.300 v15.1.0
+    title: "TS 36.300 v15.1.0 - Evolved Universal Terrestrial Radio Access (E-UTRA) and Evolved Universal Terrestrial Radio Access Network (E-UTRAN); Overall description; Stage 2"
   TGPP24301:
-    title: >
-      TS 24.301 v15.2.0 - Non-Access-Stratum (NAS) protocol for Evolved Packet System (EPS); Stage 3
-    # YAML's ">" syntax used above is a good way to write longer titles
-    author:
-      org: 3GPP
-    date: 2018
-    seriesinfo:
-      3GPP TS 24.301 v15.2.0
+    title: "TS 24.301 v15.2.0 - Non-Access-Stratum (NAS) protocol for Evolved Packet System (EPS); Stage 3"
 
 
 --- abstract
@@ -153,8 +118,8 @@ the SCEF of the Home PLMN and is located in the Visited PLMN
    +--+                +--------+
    
 ~~~~~~
-{: #Fig--Archi title="3GPP network architecture"}
-
+{: #Fig--Archi title='3GPP network architecture'}
+ 
 
 The architecture for 3GPP LTE network has been reused for NB-IoT with some optimizations and simplifications known as Cellular IoT (CIoT). Considering the typical use cases for CIoT devices here are described some of the additions to the LTE architecture specific for CIoT. C-SGN(CIoT Serving Gateway Node) is a deployment option co-locating EPS entities in the control plane and user plane paths (for example, MME + SGW + P-GW) and the external interfaces of the entities supported. The C-SGN also supports at least some of the following CIoT EPS Optimizations:
   * Control Plane CIoT EPS Optimization for small data transmission.
@@ -192,7 +157,7 @@ Another node introduced in the CIOT architecture is the SCEF (Service Capability
                                       +---------------+        +----------+    +-----------+
 
 ~~~~~~                                                                                                     
-{: #Fig--DataPlan title="3GPP optimized CIOT network architecture"}
+{: #Fig--DataPlan title='3GPP optimized CIOT network architecture'}
  
 
 ## Data Transmission
@@ -225,7 +190,7 @@ The Access Stratum for User Plane is comprised by Packet Data Convergence Protoc
             	 LTE eMTC
             	    UE
 ~~~~~~
-{: #Fig--ProtocolArchi title="3GPP CIOT radio protocol architecture for data over user plane"} 
+{: #Fig--ProtocolArchi title='3GPP CIOT radio protocol architecture for data over user plane'} 
 
 ### Packet Data Convergence Protocol (PDCP)
 Each of the  Radio Bearers (RB) are associated with one PDCP entity. And a PDCP entity is associated with one or two RLC entities depending of the unidirectional or bi-directional characteristics of the RB and RLC mode used. A PDCP entity is associated either control plane or user plane which independent configuration and functions. The maximum supported size for NB-IoT of a PDCP SDU is 1600 octets.
@@ -277,7 +242,7 @@ MAC provides a mapping between the higher layers abstraction called Logical Chan
              +----------------------------------------------------------+ +----------------+--------+ 
                                   TB1                                                TB2  
 ~~~~~~
-{: #Fig--ProtocolBearers title="Example of User Plane packet encapsulation for two transport blocks"} 
+{: #Fig--ProtocolBearers title='Example of User Plane packet encapsulation for two transport blocks'} 
 
 
 ## Data Over Control Plane
@@ -310,7 +275,7 @@ The Non-Access Stratum (NAS), conveys mainly control signaling between the UE an
 	*PDCP is bypassed until AS security is activated TGPP36300.	
 ~~~~~~
 
-{: #Fig--ProtocolStack title="3GPP CIOT radio protocol architecture for DoNAS transmissions"}   
+{: #Fig--ProtocolStack title='3GPP CIOT radio protocol architecture for DoNAS transmissions'}   
 
 NAS has been adapted to provide support for user plane data transmissions to reduce the overhead when transmitting infrequent small quantities of data. This is known as Data over NAS (DoNAS) or Control Plane CIoT EPS optimization. In DoNAS the UE makes use of the pre-established NAS security and piggyback uplink small data into the initial NAS uplink message, and uses an additional NAS message to receive downlink small data response.
 The data encryption from the network side is performed by the C-SGN in a NAS PDU. 
@@ -368,7 +333,7 @@ The use of DoNAS is typically expected when a terminal in a power saving state r
                                                  +------------------+  
 ~~~~~~
 
-{: #Fig--ProtocolTrans title="DoNAS transmission sequence from an Uplink initiated access"} 
+{: #Fig--ProtocolTrans title='DoNAS transmission sequence from an Uplink initiated access'} 
 
 
 
@@ -477,7 +442,7 @@ MAC   |MAC  |RLC  |      RLC        | |MAC  |RLC |      RLC      | |MAC  |    RL
                          TB1                              TB2                            TB3           
 
 ~~~~~~
-{: #Fig--ProtocolNASBearer title="Example of User Plane packet encapsulation for Data over NAS"} 
+{: #Fig--ProtocolNASBearer title='Example of User Plane packet encapsulation for Data over NAS'} 
 
 
 
