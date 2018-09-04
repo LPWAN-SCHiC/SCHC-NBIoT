@@ -141,7 +141,7 @@ Another node introduced in the CIOT architecture is the SCEF (Service Capability
                                       +---------------+        +----------+    +-----------+
 
 ~~~~~~                                                                                                     
-{: #Fig--Archi title="3GPP optimized CIOT network architecture"}
+{: #Fig--DataPlan title="3GPP optimized CIOT network architecture"}
  
 
 ## Data Transmission
@@ -224,7 +224,7 @@ MAC provides a mapping between the higher layers abstraction called Logical Chan
                                   TB1                                                TB2           
 
 ~~~~~~
-{: #Fig--ProtocolArchi title="Example of User Plane packet encapsulation for two transport blocks"} 
+{: #Fig--ProtocolBearers title="Example of User Plane packet encapsulation for two transport blocks"} 
 
 
 ## Data Over Control Plane
@@ -255,7 +255,7 @@ The Non-Access Stratum (NAS), conveys mainly control signaling between the UE an
 	*PDCP is bypassed until AS security is activated [TGPP36300].	
 ~~~~~~
 
-{: #Fig--ProtocolArchi title="3GPP CIOT radio protocol architecture for DoNAS transmissions"}   
+{: #Fig--ProtocolStack title="3GPP CIOT radio protocol architecture for DoNAS transmissions"}   
 
 NAS has been adapted to provide support for user plane data transmissions to reduce the overhead when transmitting infrequent small quantities of data. This is known as Data over NAS (DoNAS) or Control Plane CIoT EPS optimization. In DoNAS the UE makes use of the pre-established NAS security and piggyback uplink small data into the initial NAS uplink message, and uses an additional NAS message to receive downlink small data response.
 The data encryption from the network side is performed by the C-SGN in a NAS PDU. 
@@ -312,7 +312,7 @@ The use of DoNAS is typically expected when a terminal in a power saving state r
 
 ~~~~~~
 
-{: #Fig--ProtocolArchi title="DoNAS transmission sequence from an Uplink initiated access"} 
+{: #Fig--ProtocolTrans title="DoNAS transmission sequence from an Uplink initiated access"} 
 
 
 
@@ -429,7 +429,7 @@ MAC   |MAC  |RLC  |      RLC        | |MAC  |RLC |      RLC      | |MAC  |    RL
                          TB1                              TB2                            TB3           
 
 ~~~~~~
-{: #Fig--ProtocolArchi title="Example of User Plane packet encapsulation for Data over NAS"} 
+{: #Fig--ProtocolNASBearer title="Example of User Plane packet encapsulation for Data over NAS"} 
 
 
 
