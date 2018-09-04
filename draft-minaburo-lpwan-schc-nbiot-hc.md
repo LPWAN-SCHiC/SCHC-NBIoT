@@ -400,7 +400,7 @@ TBD
 NB-IoT and 3GPP wireless access in general assumes byte aligned payload. Therefore the L2 word for NB-IoT MUST be considered 8 bits and the treatment of padding should use this value accordingly.
 
 # Security considerations
-3GPP access security is specified in (TGPP33203).
+3GPP access security is specified in {{TGPP33203}}.
 
 
 
