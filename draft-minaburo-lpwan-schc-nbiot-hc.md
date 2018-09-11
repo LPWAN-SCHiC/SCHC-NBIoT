@@ -381,7 +381,7 @@ The SCHC draft specifies three fragmentation modes.
 In a nutshell, SCHC defined fragmentation mechansim includes numbering fragmented packets, acknowledgement if traversing over unreliable network and a mechansim to detect the integrity of all the fragments received at the end of transmission.
 
 
-Non-IP Data delivery:
+### Non-IP Data delivery:
 
 In Non-IP data delivery, the in-sequence delivery and relaibility is not guaranted in NB-IoT. According to GPP standard, Non-IP data in-sequence delivery cannot be guaranteed and data PDUs may be lost requiring higher protocol layers to ensure guaranteed delivery when needed (3GPP TS 23.401). Therefore, 3GPP defines protocol for reliable data service between UE and SCEF in TS 24.250.
 
@@ -389,7 +389,7 @@ Non-IP data delivery, SCEF decides maximum packet size for each device/applciati
 
 
 
-IP data delivery: 
+### IP data delivery: 
 
 SCHC compression/fragementation can be deployed in MME/UE if using control plane optimization and eNB/UE if using user plane optimization. This draft considers what is best way to do fragmentation if fragmentation is needed. 
 
